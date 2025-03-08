@@ -1,0 +1,15 @@
+# Use a simple base image
+FROM busybox:latest
+
+# Set working directory
+WORKDIR /app
+
+# Copy the pre-built application
+# Note: You need to build the application locally first with 'npm run build'
+COPY dist /app
+
+# Expose port 80
+EXPOSE 80
+
+# Start a simple HTTP server
+CMD ["busybox", "httpd", "-f", "-p", "80", "-h", "/app"] 
